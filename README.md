@@ -1,6 +1,6 @@
 # Tính diện tích tứ giác qua toạ độ bốn đỉnh
-## Tính diện tích 4 tam giác: ABC, ABD, ACD, BCD
 ## Ý tưởng làm bài
+* Tính diện tích 4 tam giác: ABC, ABD, ACD, BCD
 * Chúng ta sẽ sử dụng công thức sau để tính diện tích cho từng tam giac một khi có toạ độ ba điểm:
 * ``` S_ABC = 1/2 | ((xB-xA)(yC-yA) - (xC-xA)(yB-yA)) |```.
 * Tương tự vói các tam giác khác.
