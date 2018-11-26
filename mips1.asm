@@ -1,12 +1,12 @@
 ########################################
 # Y tuong lam bai:
-# Chung ta se chia tu giac nay lam 4 tam giac nho.
+# Tinh dien tich 4 tam giac: ABC, ABD, ACD, BCD
 # Chung ta se Su dung cong thuc sau de tinh dien tich tam giac ABC khi co 3 diem:
 # S = 1/2 | ((xB-xA)(yC-yA) - (xC-xA)(yB-yA)) |
 # Tuong tu voi cac tam giac khac.
 # Co hai truong hop cua tu giac la:
 # - Tu giac loi:
-# + Dien tich tu giac se bang dien tich cua bon tam giac nho cong lai chia doi.
+# + Dien tich tu giac se bang dien tich cua bon tam giac cong lai chia doi.
 # - Tu giac lom:
 # + Se co mot tam giac lon nhat co dien tich bang dien tich cua ba tam giac nho hon cong lai
 # + Se co ba truong hop dien tich cua tam giac lom.
