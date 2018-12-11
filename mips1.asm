@@ -149,6 +149,14 @@ exit1:
 	div.s $f11, $f11, $f12	# f11 = f11 / 2.0
 	swc1 $f11, sABC
 	
+	# S_ABD
+	lwc1 $f1, xa
+	lwc1 $f2, ya
+	lwc1 $f3, xb
+	lwc1 $f4, yb
+	lwc1 $f5, xd
+	lwc1 $f6, yd
+	
 	# Tinh dien tich tam giac ABD
 	#S = 1/2((xB-xA)(yD-yA) - (xD-xA)(yB-yA))
 	sub.s $f7, $f3, $f1		# f7 = xB - xA
@@ -173,6 +181,14 @@ exit2:
 	div.s $f11, $f11, $f12	# f11 = f11 / 2.0
 	swc1 $f11, sABD
 	
+	# S_ACD
+	lwc1 $f1, xa
+	lwc1 $f2, ya
+	lwc1 $f3, xc
+	lwc1 $f4, yc
+	lwc1 $f5, xd
+	lwc1 $f6, yd
+	
 	# Tinh dien tich tam giac ACD
 	# S = 1/2((xC-xA)(yD-yA) - (xD-xA)(yC-yA))
 	sub.s $f7, $f3, $f1		# f7 = xC - xA
@@ -196,6 +212,14 @@ exit3:
 	lwc1 $f12, heso			# load f12 = 2.0
 	div.s $f11, $f11, $f12	# f11 = f11 / 2.0
 	swc1 $f11, sACD
+	
+	# S_BCD
+	lwc1 $f1, xb
+	lwc1 $f2, yb
+	lwc1 $f3, xc
+	lwc1 $f4, yc
+	lwc1 $f5, xd
+	lwc1 $f6, yd
 	
 	# Tinh dien tich tam giac BCD
 	# S = 1/2|((xC-xB)(yD-yB) - (xD-xB)(yC-yB))|
