@@ -52,13 +52,15 @@ endline: .asciiz "\n"
 	.text
 	.globl main
 main:
+	# Nhap hoanh do diem A
 	li $v0, 4
 	la $a0, nhapXa
 	syscall
 	li $v0, 6
 	syscall
 	swc1 $f0, xa
-	
+
+	# Nhap tung do diem A
 	li $v0, 4
 	la $a0, nhapYa
 	syscall
@@ -66,6 +68,7 @@ main:
 	syscall
 	swc1 $f0, ya
 	
+	# Nhap hoanh do diem B
 	li $v0, 4
 	la $a0, nhapXb
 	syscall
@@ -73,6 +76,7 @@ main:
 	syscall
 	swc1 $f0, xb
 	
+	# Nhap tung do diem B
 	li $v0, 4
 	la $a0, nhapYb
 	syscall
@@ -80,6 +84,7 @@ main:
 	syscall
 	swc1 $f0, yb
 	
+	# Nhap hoanh do diem C
 	li $v0, 4
 	la $a0, nhapXc
 	syscall
@@ -87,6 +92,7 @@ main:
 	syscall
 	swc1 $f0, xc
 	
+	# Nhap tung do diem C
 	li $v0, 4
 	la $a0, nhapYc
 	syscall
@@ -94,6 +100,7 @@ main:
 	syscall
 	swc1 $f0, yc
 	
+	# Nhap hoanh do diem D
 	li $v0, 4
 	la $a0, nhapXd
 	syscall
@@ -101,6 +108,7 @@ main:
 	syscall
 	swc1 $f0, xd
 	
+	# Nhap tung do diem D
 	li $v0, 4
 	la $a0, nhapYd
 	syscall
@@ -108,7 +116,7 @@ main:
 	syscall
 	swc1 $f0, yd
 	
-	# S_ABC
+	# Doc toa do 4 dinh ABCD luu vao cac thanh ghi tu f1 toi f6
 	lwc1 $f1, xa
 	lwc1 $f2, ya
 	lwc1 $f3, xb
@@ -116,8 +124,8 @@ main:
 	lwc1 $f5, xc
 	lwc1 $f6, yc
 	
-	#S = 1/2|((xB-xA)(yC-yA) - (xC-xA)(yB-yA))|
-	
+	# Tinh dien tich tam giac ABC
+	# S = 1/2|((xB-xA)(yC-yA) - (xC-xA)(yB-yA))|
 	sub.s $f7, $f3, $f1		# f7 = xB - xA
 	sub.s $f8, $f6, $f2		# f8 = yC - yA
 	mul.s $f9, $f7, $f8		# f9 = (xB-xA)(yC-yA)
@@ -128,7 +136,7 @@ main:
 	
 	c.lt.s $f9, $f10 		# if f9 < f10 then flag = true else flag = false
 	bc1t cm1				# if flag = true -> cm
-	bc1f mc1				# if flag = false ->mc
+	bc1f mc1				# if flag = false -> mc
 cm1:
 	sub.s $f11, $f10, $f9	# f11 = (xC-xA)(yB-yA) - (xB-xA)(yC-yA)
 	j exit1
@@ -141,17 +149,8 @@ exit1:
 	div.s $f11, $f11, $f12	# f11 = f11 / 2.0
 	swc1 $f11, sABC
 	
-	
-	# S_ABD
-	lwc1 $f1, xa
-	lwc1 $f2, ya
-	lwc1 $f3, xb
-	lwc1 $f4, yb
-	lwc1 $f5, xd
-	lwc1 $f6, yd
-	
+	# Tinh dien tich tam giac ABD
 	#S = 1/2((xB-xA)(yD-yA) - (xD-xA)(yB-yA))
-	
 	sub.s $f7, $f3, $f1		# f7 = xB - xA
 	sub.s $f8, $f6, $f2		# f8 = yD - yA
 	mul.s $f9, $f7, $f8		# f9 = (xB-xA)(yD-yA)
@@ -174,17 +173,8 @@ exit2:
 	div.s $f11, $f11, $f12	# f11 = f11 / 2.0
 	swc1 $f11, sABD
 	
-
-	# S_ACD
-	lwc1 $f1, xa
-	lwc1 $f2, ya
-	lwc1 $f3, xc
-	lwc1 $f4, yc
-	lwc1 $f5, xd
-	lwc1 $f6, yd
-	
-	#S = 1/2((xC-xA)(yD-yA) - (xD-xA)(yC-yA))
-	
+	# Tinh dien tich tam giac ACD
+	# S = 1/2((xC-xA)(yD-yA) - (xD-xA)(yC-yA))
 	sub.s $f7, $f3, $f1		# f7 = xC - xA
 	sub.s $f8, $f6, $f2		# f8 = yD - yA
 	mul.s $f9, $f7, $f8		# f9 = (xC-xA)(yD-yA)
@@ -207,18 +197,8 @@ exit3:
 	div.s $f11, $f11, $f12	# f11 = f11 / 2.0
 	swc1 $f11, sACD
 	
-		
-
-	# S_BCD
-	lwc1 $f1, xb
-	lwc1 $f2, yb
-	lwc1 $f3, xc
-	lwc1 $f4, yc
-	lwc1 $f5, xd
-	lwc1 $f6, yd
-	
-	#S = 1/2|((xC-xB)(yD-yB) - (xD-xB)(yC-yB))|
-	
+	# Tinh dien tich tam giac BCD
+	# S = 1/2|((xC-xB)(yD-yB) - (xD-xB)(yC-yB))|
 	sub.s $f7, $f3, $f1		# f7 = xC - xB
 	sub.s $f8, $f6, $f2		# f8 = yD - yB
 	mul.s $f9, $f7, $f8		# f9 = (xC-xB)(yD-yB)
