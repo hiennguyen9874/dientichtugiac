@@ -13,3 +13,5 @@
     + Diện tích tứ giác ABCD sẽ là diện tích tam giác lớn nhât trừ đi ba tam giác nhỏ cộng lại.
 * Tứ giác lồi:
     + Diện tích tứ giác sẽ bằng diện tích bốn tam giác nhỏ cộng lại chia đôi.
+
+Bài tập lớn chạy trên phần mềm MARS MIPS simulator các bạn có thể tải phần mềm tại [đây](http://courses.missouristate.edu/KenVollmar/mars/download.htm)
